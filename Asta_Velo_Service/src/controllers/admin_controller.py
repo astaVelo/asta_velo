@@ -19,7 +19,15 @@ import os
 app, api = server.app, server.api
 admin_conf = api.namespace('admin', description='Admin operations')
 
+email_text_confirmed = '''Schön, dass du dich für eines unserer Fahrräder interessierst. Komm am zu deinem gewählten Datum und Uhrzeit in der Fahrrad-Selbsthilfewerkstatt (C 6 4) vorbei, damit du das Fahrrad ausprobieren und mitnehmen kannst. Bring den Betrag für Ausleihe und Kaution bitte passend mit.
 
+Freundliche Grüße,
+Nicole (velo@asta.uni-saarland.de, Tel.: +49 681 - 302 2900)'''
+
+email_text_rejection = '''Leider ist zu dem gewählten Zeitpunkt kein Fahrrad ausleihbar. Vielleicht möchtest du zu einem späteren Zeitpunkt ein Fahrrad ausleihen? Dann melde dich einfach noch einmal. Wir bemühen uns ständig darum, mehr Fahrräder zu beschaffen und freuen uns sehr über Dein Interesse!
+
+Freundliche Grüße,
+Nicole (velo@asta.uni-saarland.de, Tel.: +49 681 - 302 2900)'''
 
 
 def encrypt_password(password):
@@ -634,11 +642,12 @@ class RequestedAppointments(Resource):
 
             mail_server = create_mailserver()
             sql_command_loan = '''SELECT * FROM loans WHERE id = %s '''
-            new_loan = cursor.execute(sql_command_loan, new_appointment['loan_id'])
+            cursor.execute(sql_command_loan, new_appointment['loan_id'])
+            new_loan = cursor.fetchone()
             if new_appointment['confirmed'] == 1:
-                mail_server.send_mail(new_loan['email'], 'ASTA VELO Rückmeldung - Ausleihe', 'Ihre Anfrage wurde bestätigt')
+                mail_server.send_mail(new_loan['email'], 'ASTA VELO Rückmeldung - Ausleihe', email_text_confirmed)
             else:
-                mail_server.send_mail(new_loan['email'], 'ASTA VELO Rückmeldung - Ausleihe', 'Ihre Anfrage wurde abgelehnt')
+                mail_server.send_mail(new_loan['email'], 'ASTA VELO Rückmeldung - Ausleihe', email_text_rejection)
 
             response_object = {
                 'status': 'success',
@@ -973,10 +982,10 @@ class RequestedReservations(Resource):
             mail_server = create_mailserver()
             if new_reservation['confirmed'] == 1:
                 mail_server.send_mail(new_reservation['email'], 'ASTA VELO Rückmeldung - Reservierung',
-                                      'Ihre Anfrage wurde bestätigt')
+                                      email_text_confirmed)
             else:
                 mail_server.send_mail(new_reservation['email'], 'ASTA VELO Rückmeldung - Reservierung',
-                                      'Ihre Anfrage wurde abgelehnt')
+                                      email_text_rejection)
             response_object = {
                 'status': 'success',
                 'message': 'Successfully inserted.'

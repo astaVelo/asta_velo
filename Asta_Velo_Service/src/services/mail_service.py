@@ -1,4 +1,5 @@
 import smtplib
+from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import os
 
@@ -33,6 +34,9 @@ class MailServer:
         msg['From'] = self.sender
         msg['To'] = recipient
         msg['Subject'] = subject
+
+        text = MIMEText(message, "plain")
+        msg.attach(text)
 
         self.server.sendmail(self.sender, recipient, msg.as_string())
 
