@@ -1,0 +1,141 @@
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    height: fit-content;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+    flex: 33%;
+    max-width: 31%;
+    padding: 0 4px;
+}
+
+.item img {
+    vertical-align: middle;
+    width: 80%;
+    left:10%;
+    position: relative;
+    border: 1px solid;
+}
+
+.item {
+    width: 100%;
+    height: fit-content;
+    margin-top: 8px;
+    padding: 0 4px;
+    position: relative;
+}
+
+.subscription {
+    width: 80%;
+    left: 20%;
+    text-align: left;
+    position: relative;
+}
+
+
+.subscriptiondetail {
+    width: 80%;
+    left: 7%;
+    text-align: left;
+    position: relative;
+}
+
+.imgsub {
+    margin-top: 1px;
+    width: 76%;
+    left: 12%;
+    height: 75px;
+    position: relative;
+
+
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 1200px) {
+    .column {
+        flex: 50%;
+        max-width: 48%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 100%;
+        max-width: 96%;
+    }
+}
+
+
+/* ----- Checkboxes ----- */
+
+/* Customize the label (the container) */
+.check {
+    /*display: block;*/
+    position: relative;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    top: 12px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.check input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 35px;
+    width: 35px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.check:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.check input:checked ~ .checkmark {
+    background-color: #76C659;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.check input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.check .checkmark:after {
+    left: 13px;
+    top: 10px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}

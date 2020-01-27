@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome file</title>
+  <link rel="stylesheet" href="https://stackedit.io/style.css" />
+</head>
+
+<body class="stackedit">
+  <div class="stackedit__html"><h1 id="api-deployment-guide">API Deployment Guide</h1>
+<h4 id="abtract">Abtract</h4>
+<p>In this instruction we will guide you through the steps of deploying the API provided by us.</p>
+<h2 id="introduction">Introduction</h2>
+<p>The API is the server where all the logic of the application is handled. To be more accurate, it is the place where the communication and the data flow between the user/admin and the database is controlled.<br>
+The API is written in python using the flask restplus module.<br>
+Furthermore we are using a mysql database.</p>
+<p>For deployment you have to options, namely:</p>
+<ol>
+<li>Deployment on a cloud hoster like <a href="https://scalingo.com/">https://scalingo.com/</a></li>
+<li>Deployment on your own server</li>
+</ol>
+<h3 id="deployment-of-mysql-database">Deployment of MySQL database</h3>
+<p>To proper deploy the database you have to choose a domain/database hoster. We recommend you to use strato (<a href="https://www.strato.de/">https://www.strato.de/</a>).<br>
+Here you can choose the PowerWeb Basic packet. With that you can manage databases. Here you need to establish a new database. After that you will be rooted to the phpmyadmin userinterface where you can add a new database. Afterwards you can import an existing database. Choose the <strong><em>asta_velo.sql</em></strong> file. After that you have imported the asta velo database and you can use it.</p>
+<h3 id="deployment-of-the-api-on-a-cloud-hosting-service">1. Deployment of the API on a cloud hosting service</h3>
+<p>This is perhaps the most simple method. There are several different cloud hosting service in the web, where you can deploy the API. We would recommend you to use scalingo where you also can follow the instruction on their website <a href="https://scalingo.com/">https://scalingo.com/</a> . But the counterpart of this method is, that is is not for free.</p>
+<h3 id="deployment-of-the-api-on-your-own-server">2. Deployment of the API on your own server</h3>
+<p>This method demands more effort.</p>
+<ol>
+<li>First of all make sure your server is accesible from the outside.</li>
+<li>Install python 3.7 on your server (<a href="https://www.python.org/downloads/">https://www.python.org/downloads/</a>).</li>
+<li>Install all the needed modules to run the API on your server.<br>
+Use the command <strong><em>python -m pip install module-name</em></strong> or <strong><em>pip install module-name</em></strong>.</li>
+<li>You need to set the following environment variables:<br>
+- <em>MYSQL_HOST</em> -&gt; the host address of the database (e.g. localhost)<br>
+- <em>MYSQL_USER</em> -&gt; the user which has access to the database (e.g. root)<br>
+- <em>MYSQL_PW</em> -&gt; the password to access the database with the user above<br>
+- <em>MYSQL_DB</em> -&gt; the name of the database (e.g. asta_velo)<br>
+- <em>MAIL_SENDER</em> -&gt; your central email address (e.g. <a href="mailto:asta_velo_test@web.de">asta_velo_test@web.de</a>)<br>
+- <em>MAIL_PASSWORD</em> -&gt; the password of your email address (e.g. 42astavelo42)<br>
+- <em>MAIL_HOST</em> -&gt; the smtp host address (e.g. <a href="http://smtp.web.de">smtp.web.de</a>)<br>
+- <em>MAIL_PORT</em> -&gt; the open port of your smtp host (e.g. 587)<br>
+- <em>PYTHON_ENV</em> = <strong>production</strong> (important!!)<br>
+- <em>PORT</em> -&gt; the port for your API (e.g. 5000)</li>
+<li>Afterwards you can run the API using the command <strong><em>python <a href="http://app.py">app.py</a></em></strong></li>
+<li>The API should now be reachable. Test it by following this url:<br>
+<strong><em><a href="http://your-server-name.de/v1/api/swagger">http://your-server-name.de/v1/api/swagger</a></em></strong></li>
+<li>Now you have to be able to see the swagger documentation of the API	<img src="https://i.ibb.co/SvdpPnz/astaveloswagger.jpg" alt="Asta Velo Swagger Documentation"></li>
+</ol>
+</div>
+</body>
+
+</html>

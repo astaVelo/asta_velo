@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Appointment">
+
+    <LinearLayout
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="1dp"
+        android:layout_marginRight="1dp"
+        android:layout_marginBottom="1dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:text="Es müssen alle Felder mit  *  ausgefüllt werden"
+                    android:textAlignment="center" />
+
+                <EditText
+                    android:id="@+id/editText_firstname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:ems="10"
+                    android:hint="Vorname *"
+                    android:inputType="textPersonName"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText_lastname"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nachname *"
+                    android:inputType="textPersonName"
+                    android:minEms="1"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText_mail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Email Adresse *"
+                    android:inputType="textEmailAddress"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Datum (DD.MM.YYYY)*"
+                    android:inputType="date"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText_time"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Uhrzeit (HH:MM)*"
+                    android:inputType="time"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="Telefonnummer"
+                    android:inputType="phone"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <EditText
+                    android:id="@+id/editText_massage"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:gravity="start|top"
+                    android:hint="Nachricht"
+                    android:inputType="textMultiLine"
+                    android:padding="@dimen/asta_default"
+                    android:textSize="12sp" />
+
+                <CheckBox
+                    android:id="@+id/checkBox2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/colorPrimaryDark"
+                    android:text="Ich möchte den Newsletter abonnieren" />
+
+                <Button
+                    android:id="@+id/appointmentFinishButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginBottom="50dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:text="Fertig"
+                    android:textColor="@color/colorAccent" />
+            </LinearLayout>
+        </ScrollView>
+
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/colorAccent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Alle Felder mit  *  müssen ausgefüllt werden"
+                android:textAlignment="center" />
+
+
+            <EditText
+                android:id="@+id/editText_firstname2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:ems="10"
+                android:hint="Vorname *"
+                android:inputType="textPersonName"
+                android:padding="@dimen/asta_default"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editText_lastname2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:padding="@dimen/asta_default"
+                android:hint="Nachname *"
+                android:textSize="12sp"
+                android:minEms="1"/>
+
+            <EditText
+                android:id="@+id/editText_mail2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textEmailAddress"
+                android:padding="@dimen/asta_default"
+                android:hint="Email Adresse *"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editText_phone2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="phone"
+                android:padding="@dimen/asta_default"
+                android:hint="Telefonnummer"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editText_date2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="date"
+                android:padding="@dimen/asta_default"
+                android:hint="Datum (DD.MM.YYYY)*"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editText_time2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="time"
+                android:padding="@dimen/asta_default"
+                android:hint="Uhrzeit (HH:MM)*"
+                android:textSize="12sp" />
+
+            <EditText
+                android:id="@+id/editText_massage2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="start|top"
+                android:inputType="textMultiLine"
+                android:padding="@dimen/asta_default"
+                android:hint="Nachricht"
+                android:textSize="12sp" />
+
+            <FrameLayout
+                android:id="@+id/FrameLayout01"
+                android:layout_width="fill_parent"
+                android:layout_height="578dp">
+
+                <FrameLayout
+                    android:id="@+id/LinearLayout01"
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:layout_gravity="top">
+
+                    <TextView
+                        android:id="@+id/TextView01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginStart="30dp"
+                        android:layout_marginLeft="30dp"
+                        android:gravity="center_vertical"
+                        android:text="Wähle ein oder mehrere Fahrräder"
+                        android:textColor="@android:color/darker_gray"
+                        android:textSize="14sp"
+                        android:textStyle="normal"></TextView>
+                </FrameLayout>
+
+                <GridView
+                    android:id="@+id/gridview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="202dp"
+                    android:layout_gravity="bottom"
+                    android:layout_marginTop="50dp"
+                    android:columnWidth="90dp"
+                    android:gravity="center"
+                    android:horizontalSpacing="10dp"
+                    android:numColumns="auto_fit"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="10dp"></GridView>
+
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/rentDoneButton"
+                android:layout_width="366dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="20dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Weiter"
+                android:textColor="@color/colorAccent" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

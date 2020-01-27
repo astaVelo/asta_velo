@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Radverleih AStA VELO</title>
+        <meta name="description" content="Homepage des Fahrradverleihs AStA Velo.">
+
+        <!-- import css stylesheets -->
+        <link rel="stylesheet" href="CSS/Basics.css">
+        <link rel="stylesheet" href="CSS/TopNav.css">
+        <link rel="stylesheet" href="CSS/Formular.css">
+        <link rel="stylesheet" href="CSS/Footer.css">
+        <link rel="stylesheet" href="CSS/grid.css">
+        <link rel="stylesheet" href="CSS/Kalender.css">
+
+        <!-- import jquery -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                var button = jQuery('#nextbutton');
+                button.bind('click',function(){
+                    var radioButtons = $('.form input:radio');
+                    var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
+
+                    selectedIndex = selectedIndex + 2;
+
+                    $('.form input[type="radio"]:nth-of-type(' + selectedIndex + ')').prop('checked', true);
+
+                    if (selectedIndex == 3) {
+                        button.html('Fertig');
+                    }
+
+                    if(selectedIndex==2){
+                        $('#hint').hide();
+                    }
+
+                    if(selectedIndex < 3){
+                        button.html('Weiter');
+                    }
+                })
+
+            });
+        </script>
+        <script type="text/javascript">
+            jQuery(document).ready(function(){
+                var button = jQuery('.form input:radio');
+                button.bing('click', function(){
+                    var radioButtons = $('.form input:radio');
+                    var selectedIndex = radioButtons.index(radioButtons.filter(':checked'));
+                    selectedIndex = selectedIndex + 1;
+
+                    if(selectedIndex < 3){
+                        button.html('Weiter');
+                    }
+                })
+            });
+        </script>
+
+        <script>
+            jQuery(document).ready(function(){
+                document.querySelector("#today").valueAsDate = new Date();
+                var tomorrow = new Date();
+                tomorrow.setDate(tomorrow.getDate() + 1);
+                document.querySelector("#tomorrow").valueAsDate = tomorrow;
+            });
+        </script>
+
+		
+		<meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *">
+		<!-- Required meta tags-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+		<meta name="format-detection" content="telephone=no">
+		<meta name="msapplication-tap-highlight" content="no">
+        <!-- import font -->
+        <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700" rel="stylesheet">
+		
+		<!-- This template defaults to the iOS CSS theme. To support both iOS and material design themes, see the Framework7 Tutorial at the link below:
+        http://www.idangero.us/framework7/tutorials/maintain-both-ios-and-material-themes-in-single-app.html
+     -->
+
+		<link rel="stylesheet" href="lib/framework7/css/framework7.ios.min.css">
+		<link rel="stylesheet" href="lib/framework7/css/framework7.ios.colors.min.css">
+
+		<link rel="stylesheet" href="css/styles.css">
+
+    </head>
+
+
+    <body>
+
+        <!-- Top Navigation -->
+        <div class="topnav">
+            <div id="logo">
+                <img src="SVG/bicycle%20white.svg" alt="AStA VELO Logo" id="SVGLogo">
+                <a href="index.html" id="home"><p id="LogoText">Radverleih AStA-VELO</p></a>
+            </div>
+
+            <div id="social">
+                <p id="email">Tel.: +49 681 - 302 2900 | velo@asta.uni-saarland.de</p>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/AStA.UdS"><img id="first-top-logo" class="topnav-social-logos" src="SVG/facebook-logo.svg" alt="Facebook" id="FacebookLogo"></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/AStA_UdS"><img class="topnav-social-logos" src="SVG/twitter.svg" alt="Twitter" id="TwitterLogo"></a>
+                <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/asta_uds/"><img class="topnav-social-logos" src="SVG/instagram.svg" alt="Instagram" id="InstagramLogo"></a>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="mainsite">
+            <div class="outercontainer">
+                <div class="container">
+                    <div class="form">
+                        <h2>AStA Velo Reservierung</h2>
+                        <p>Bitte füllen Sie alle untenstehenden Felder aus.</p>
+                        <p id="abstandnachunten">Die angegebenen Information helfen uns, ihre Ausleihe so einfach wie möglich zu gestalten und mit Ihnen in Kontakt zu bleiben.</p>
+
+                        <input id="one" type="radio" name="stage" checked="checked" />
+                        <input id="two" type="radio" name="stage" />
+                        <input id="three" type="radio" name="stage" />
+
+                        <div class="stages">
+                            <label for="one">1</label>
+                            <label for="two">2</label>
+                            <label for="three">3</label>
+                        </div>
+
+                        <span class="progress"><span></span></span>
+
+                        <div class="panels">
+                            <div data-panel="one">
+                                <h4>Kontaktinformationen</h4>
+                                <p class="FormHeading">Vorname</p>
+                                <input type="text" placeholder="Vorname" />
+                                <p class="FormHeading">Nachname</p>
+                                <input type="text" placeholder="Nachname" />
+                                <p class="FormHeading">E-Mail Adresse (@stud.uni-saarland.de)</p>
+                                <input type="text" placeholder="E-Mail" />
+                                <p class="FormHeading">Telefonnummer*</p>
+                                <input type="text" placeholder="Telefonnummer*" />
+                                <h4 class="SecondHeading">Zusätzliche Informationen</h4>
+                                <p class="FormHeading" id="specialhint">Die Angabe der Körpergröße ermöglicht es uns die Auswahl der zu dir passenden Fahrrädern zu optimieren.</p>
+                                <p class="FormHeading">Körpergröße (cm)*</p>
+                                <input type="text" placeholder="Größe (cm)" />
+                            </div>
+                            <div data-panel="two">
+                                <h4>Wähle deine Wunsch-Fahrräder aus:</h4>
+                                <section class="row">
+                                    <section class="column">
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox" checked="checked">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="column">
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox" checked="checked">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                    <section class="column">
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                        <section class=item>
+                                            <img src="Images/Rad.jpg">
+
+                                            <section class="imgsub">
+                                                <label class="check">
+                                                    <input type="checkbox">
+                                                    <span class="checkmark"></span>
+                                                </label>
+                                                <section class="subscription">
+                                                    <p class="subscriptiondetail">
+                                                        Höhe:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;110cm<br>
+                                                        Gänge:&nbsp;&nbsp;&nbsp; 6<br>
+                                                        Bremse:&nbsp; Rücktritt</p>
+                                                </section>
+                                            </section>
+                                        </section>
+                                    </section>
+                                </section>
+                            </div>
+                            <div data-panel="three">
+                                <h4>Wähle den Zeitraum, in dem du dein Velo leihen möchtest:</h4>
+                                <p class="FormHeading">Startdatum der Ausleihe:</p>
+                                <input type="date" value="29.11.2019" name="rentdate" id="today">
+                                <p class="FormHeading">Rückgabe des Fahrrads:</p>
+                                <input type="date" value="29.11.2019" name="rentdate" id="tomorrow">
+                                <h4 class="SecondHeading">Zusätzliche Anmerkungen:</h4>
+                                <p class="FormHeading" id="specialhint">Irgendwelche Fragen oder Wünsche? Lass es uns wissen:</p>
+                                <textarea name="anmerkungen" id="largeInput" placeholder="Anmerkungen..."></textarea>
+                               
+                            </div>
+                        </div>
+
+                        <button id="nextbutton">Weiter</button>
+
+                        <p id="hint">* Diese Felder sind optional.</p>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </body>
+</html>

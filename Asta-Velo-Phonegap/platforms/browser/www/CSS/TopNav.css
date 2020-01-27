@@ -1,0 +1,159 @@
+.topnav {
+    width: 100%;
+    height: 63px;
+    background: #76C659;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    top: 0;
+    left: 0;
+    position: fixed;
+    z-index: 6;
+
+}
+
+
+#logo {
+    margin: 0;
+    position:fixed;
+    top: 4px;
+    left: 30px;
+    height: 53px;
+    width: fit-content;
+    color: white;
+}
+
+
+#SVGLogo {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    left: 0;
+    float: left;
+}
+
+
+#LogoText {
+    margin: 0;
+    margin-left: 15px;
+    padding: 0;
+
+    height: 100%;
+    float: left;
+
+    %font-weight: bold;
+    vertical-align: middle;
+    font-size: 16pt;
+    line-height: 53px;
+    text-align: center;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+#social{
+    margin: 0;
+    position:fixed;
+    top: 4px;
+    right: 34px;
+    height: 53px;
+    width: fit-content;
+    color: white;
+}
+
+
+#email {
+    margin: 0;
+    margin-left: 15px;
+    padding: 0;
+
+    height: 100%;
+    float: left;
+
+    %font-weight: bold;
+    vertical-align: middle;
+    font-size: 10pt;
+    line-height: 53px;
+    text-align: center;
+
+    -webkit-font-smoothing: antialiased;
+}
+
+
+.topnav-social-logos {
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
+    margin-top: 14px;
+    height: 23px;
+}
+
+#first-top-logo {
+    margin-left: 30px;
+}
+
+
+
+/* Responsive changes */
+
+/* Use a media query to add a breakpoint at 800px: */
+@media screen and (max-width: 1200px) {
+    #social{
+        display: none;
+    }
+}
+
+
+#home {
+    color: white;
+}
+
+
+
+/* Tooltip Style */
+
+/* Tooltip container */
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+
+  /* Position the tooltip text */
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+
+  /* Fade in tooltip */
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+/* Tooltip arrow */
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}

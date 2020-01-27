@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Asta Velo</string>
+    <string name="action_settings">Settings</string>
+    <string name="abc_an_amazing_alphabet_book">ABC: An Amazing Alphabet Book!</string>
+
+
+    <string name="dr_seuss">Dr. Seuss</string>
+    <string name="karen_katz">Karen Katz</string>
+    <string name="nancy_tillman">Nancy Tillman</string>
+    <string name="eric_carle">Eric Carle</string>
+    <string name="sandra_boynton">Sandra Boynton</string>
+    <string name="textview_firstname">First Name</string>
+    <string name="textview_email">Email</string>
+    <string name="textview_lastname">Last Name</string>
+    <string name="textview_date">Date</string>
+    <string name="textview_massage">Massage</string>
+    <string name="firstname">Name</string>
+    <string name="textview_phone">Phone Number</string>
+    <string name="finishText">Vielen Dank. Deine Daten werden an den Asta Fahrrad Verleih weitergeleitet.</string>
+    <string name="zur_ck_zur_startseite">Zurück zur Startseite</string>
+    <string name="userDataToast">Um fortfahren zu können, musst du alle Felder ausfüllen.</string>
+    <string name="asta_velo">Asta Velo</string>
+    <string name="title_info">Leih dir ein AStA-VELO bei uns!</string>
+    <string name ="title2_info">Es ist sowohl Kurzzeit- als auch Langzeitausleihe möglich!</string>
+    <string name="deposit_info">Bei jeder Ausleihe werden 60€ Kaution fällig. Bei Kurzzeitausleihe kann auch ein Pfand (Ausweis o.Ä.) hinterlegt werden. Geld und Kaution bitte passend mitbringen!</string>
+    <string name="hint_info"> Hinweis: Es werden alle Fahrräder inklusive Licht und Schloss, allerdings ohne Helm vermietet</string>
+</resources>

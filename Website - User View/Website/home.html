@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Radverleih AStA VELO</title>
+    <meta name="description" content="Homepage des Fahrradverleihs AStA Velo.">
+
+    <!-- import css stylesheets -->
+    <link rel="stylesheet" href="CSS/Basics.css">
+    <link rel="stylesheet" href="CSS/TopNav.css">
+    <link rel="stylesheet" href="CSS/MainContent.css">
+    <link rel="stylesheet" href="CSS/Footer.css">
+    
+    <!-- Add icon library -->
+  
+
+    <!-- import font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Mono|Roboto+Slab|Roboto:300,400,500,700"
+        rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.0/angular.js"></script>
+
+</head>
+
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('myCtrl', function ($scope, $http) {
+        var localhost = 'http://127.0.0.1:5000/'
+
+        var config = {
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            }
+        }
+
+        $scope.language = localStorage.getItem("lang");
+		console.log($scope.language);
+		if ($scope.language == null){
+		    $scope.language = 0;
+		}
+
+		var lang_button = document.getElementById('lang_button')
+
+        lang_button.onclick = function () {
+        	if ($scope.language == 0){
+        		$scope.language = 1;
+        	} else{
+        		$scope.language = 0;
+        	}
+        	localStorage.setItem("lang",$scope.language);
+            location.reload();
+        }
+
+        $http.get(localhost + "admin/api/v1/informations", config)
+            .then(function (response) {
+                $scope.data = response.data
+                $scope.price_weekly = response.data.price_weekly;
+                $scope.price_monthly = response.data.price_monthly;
+
+                var x = response.data.opening_hours
+                var opening_array = x.split('###')
+                console.log(opening_array);
+
+                var opening_monday = opening_array[0]
+                var opening_tuesday = opening_array[1]
+                var opening_wednesday = opening_array[2]
+                var opening_thursday = opening_array[3]
+                var opening_friday = opening_array[4]
+                var opening_saturday = opening_array[5]
+                var opening_sunday = opening_array[6]
+
+                $scope.data.opening_monday = opening_monday
+                $scope.data.opening_tuesday = opening_tuesday
+                $scope.data.opening_wednesday = opening_wednesday
+                $scope.data.opening_thursday = opening_thursday
+                $scope.data.opening_friday = opening_friday
+                $scope.data.opening_saturday = opening_saturday
+                $scope.data.opening_sunday = opening_sunday
+            });
+    });
+</script>
+
+
+<body>
+
+    <!-- Top Navigation -->
+    <div class="topnav">
+        <div id="logo">
+            <img src="SVG/adminIcon.svg" alt="AStA VELO Logo" id="SVGLogo">
+            <p id="LogoText">Radverleih AStA-VELO</p>
+        </div>
+        <div id="google_translate_element"></div>
+
+
+        <div id="social">
+            <p id="email">Tel.: +49 681 - 302 2900 | velo@asta.uni-saarland.de</p>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.facebook.com/AStA.UdS"><img
+                    id="first-top-logo" class="topnav-social-logos" src="SVG/facebook-logo.svg" alt="Facebook"
+                    id="FacebookLogo"></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.twitter.com/AStA_UdS"><img
+                    class="topnav-social-logos" src="SVG/twitter.svg" alt="Twitter" id="TwitterLogo"></a>
+            <a target="_blank" rel="noopener noreferrer" href="https://www.instagram.com/asta_uds/"><img
+                    class="topnav-social-logos" src="SVG/instagram.svg" alt="Instagram" id="InstagramLogo"></a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="mainsite" ng-App="myApp" ng-Controller="myCtrl">
+        <img id="topimage" src="Images/VELO-Smaller-Brighter.jpg" alt="AStA Velo Front Image">
+        <section class="diagonal" id="diag1">
+            <div class="container" ng-model="data">
+                <h1 ng-if="language==1">Leih dir ein AStA-VELO bei uns aus!</h1>
+                <h1 ng-if="language==0">Rent an AStA Bike here!</h1>
+
+                <p ng-if="language==1"><br>Es ist sowohl Kurzzeit- als auch Langzeitausleihe möglich!<br><br>
+                    Ein Wochenende und bis zu 7 Tage:<b> {{data.price_weekly}} €</b> <br>
+                    Bis zu einem Monat: <b>{{data.price_monthly}} €</b> (Ausleihe bis zu 6 Monate am Stück möglich)<br><br>
+                    Bei jeder Ausleihe werden <b>60€ Kaution</b> fällig. Bei Kurzzeitausleihe kann auch ein Pfand
+                    (Ausweis o.Ä.) hinterlegt werden. Geld und Kaution bitte passend mitbringen! Am Besten zu den
+                    Öffnungszeiten der Fahrradwerkstatt vorbeikommen:<br><br>
+
+                    <span ng-if="data.opening_monday !== '0:0-0:0'"> Montags: <b>{{data.opening_monday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_tuesday !== '0:0-0:0'"> Dienstags: <b>{{data.opening_tuesday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_wednesday !== '0:0-0:0'"> Mittwochs: <b>{{data.opening_wednesday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_thursday !== '0:0-0:0'"> Donnerstags: <b>{{data.opening_thursday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_friday !== '0:0-0:0'"> Freitags: <b>{{data.opening_friday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_saturday !== '0:0-0:0'"> Samstags: <b>{{data.opening_saturday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_sunday !== '0:0-0:0'"> Sonntags: <b>{{data.opening_sunday}} Uhr </b><br></span><br>
+
+                    <b>Hinweis: </b> Es werden alle Fahrräder inklusive Licht und Schloss, allerdings ohne Helm vermietet.<br><br>  
+                    Hol dir die Android App, um auch von deinem Handy Fahrräder ausleihen zu können! 
+                </p> 
+
+                <p ng-if="language==0">
+                	<br>Both short-term and long-term rentals possible!<br><br>
+                    For a weekend and up to 7 days:<b> {{data.price_weekly}} €</b> <br>
+                    Up to a month: <b>{{data.price_monthly}} €</b> (Rentals for up to 6 months possible)<br><br>
+                    For every rental there is a <b>60€ deposit</b>. For short term rentals, a pledge (e.g., an ID) can is also accepted. Please bring the money and the deposit with you! <br>Stop by during our opening times:<br><br>
+
+                    <span ng-if="data.opening_monday !== '0:0-0:0'"> Monday: <b>{{data.opening_monday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_tuesday !== '0:0-0:0'"> Tuesday: <b>{{data.opening_tuesday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_wednesday !== '0:0-0:0'"> Wednesday: <b>{{data.opening_wednesday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_thursday !== '0:0-0:0'"> Thursday: <b>{{data.opening_thursday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_friday !== '0:0-0:0'"> Friday: <b>{{data.opening_friday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_saturday !== '0:0-0:0'"> Saturday: <b>{{data.opening_saturday}} Uhr </b><br></span>
+                    <span ng-if="data.opening_sunday !== '0:0-0:0'"> Sunday: <b>{{data.opening_sunday}} Uhr </b><br></span><br>
+
+                    <b>Note: </b> All bikes are equipped with a light and a lock. A helmet is not included.<br><br>
+
+                    Download the Android app to be able to rent bikes from your phone! 
+                </p>
+
+
+
+                <div id="littleButtons" style="display: flex;">
+                    <button id="lang_button" style="background-color: #76C659; height: 35px; position: relative;width: 100px;text-align: center;text-decoration: none; color: white;"><span ng-if="language==1">English version</span><span ng-if="language==0">Deutsche Version</span></button>
+
+                <a href="app.apk" target="_blank">
+                    <button style="background-color: #76C659; height: 35px; position: relative;width: 100px;text-align: center;text-decoration: none; color: white"> Android App</button>
+                </a>
+
+                </div>
+
+
+                <a href="ResBasicData.html">
+                    <div class="reserve-button">
+                        <p id="button"><span ng-if="language==1"> Zur Reservierung >> </span><span ng-if="language==0"> Make a reservation >> </span></p>
+                    </div>
+                </a>
+
+                <a href="appointment.html">
+                    <div class="reserve-button">
+                        <p id="button"><span ng-if="language==1"> Termin vereinbaren >> </span><span ng-if="language==0"> Make an appointment >> </span></p>
+                    </div>
+                </a>
+
+            </div>
+        </section>
+
+
+
+        <!-- Bike -->
+        <section class="diagonal" id="diagbike">
+            <img src="SVG/bicycle%20white.svg" alt="AStA VELO Logo" id="BikeRolling">
+        </section>
+
+
+        <!-- Partner Section -->
+        <section class="diagonal" id="diag2">
+            <div class="container">
+                <h1><br><br>Dieses Projekt entstand durch die Initiative <br>
+                    des AStA – Nachhaltigkeitsreferates mit Untertstützung durch folgende Partner:</h1>
+            </div>
+        </section>
+
+        <section class="partners">
+            <div class="container" id="no-tilt">
+                <div class="row">
+                    <div class="column">
+                        <img src="Images/Studentenwerk.jpg" id="scaledown1">
+                        <p class="subcaption">Studentenwerk im Saarland e.V.</p>
+                    </div>
+                    <div class="column">
+                        <img src="Images/saarbr%C3%BCcken.png" id="scaledown2">
+                        <p class="subcaption">Landeshauptstadt Saarbr&uumlcken</p>
+                    </div>
+                    <div class="column">
+                        <img src="Images/santander.png">
+                        <p class="subcaption">Santander Universitäten</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <img src="Images/marketing.png" id="scaledown3">
+                        <p class="subcaption">Saarland Marketing</p>
+                    </div>
+                    <div class="column">
+                        <img src="Images/ministerium.jpg">
+                        <p class="subcaption" id="longcaption">Ministerium für Wirtschaft, Arbeit, Energie und Verkehr
+                        </p>
+                    </div>
+                    <div class="column">
+                        <img src="Images/ADFC-Logo_2009_1.svg.png">
+                        <p class="subcaption">Allgemeiner Deutscher Fahrrad-Club Saar</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- Footer AStA Verlinkungen -->
+        <footer class="AStA-Footer">
+            <div class="footercontainer">
+                <div id="leftelement"><img src="Images/unieule.png" id="footerowl"></div>
+
+                <div id="astainformations">
+                    <h4>AStA Uni Saarland</h4>
+                    <ul id="moveastainfup">
+                        <li><img src="SVG/home.svg" class="ulicon">Campus Gebäude A5.2</li>
+                        <li><img src="SVG/maps-and-flags.svg" class="ulicon"><a id="lageplan" target="_blank"
+                                rel="noopener noreferrer"
+                                href="https://www.uni-saarland.de/footer/dialog/anfahrt/lageplan/interaktiv.html">Wo
+                                findest du uns auf dem Campus?</a></li>
+                        <li><img src="SVG/call-answer.svg" class="ulicon">+49 681 302 2900</li>
+                        <li><img src="SVG/fax.svg" class="ulicon">+49 681 302 4323</li>
+                        <li><img src="SVG/message-closed-envelope.svg" class="ulicon">sekretariat@asta.uni-saarland.de
+                        </li>
+                    </ul>
+                </div>
+                <div id="opentimetable">
+                    <h4>Öffnungszeiten Geschäftsstelle</h4>
+                    <ul id="movetimeup">
+                        <li>
+                            <p class="days">Montag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9-16 Uhr</p>
+                        </li>
+                        <li>
+                            <p class="days">Dienstag&nbsp;&nbsp;&nbsp;&nbsp;9-16 Uhr</p>
+                        </li>
+                        <li>
+                            <p class="days">Mittwoch&nbsp;&nbsp;&nbsp;&nbsp;9-16 Uhr</p>
+                        </li>
+                        <li>
+                            <p class="days">Donnerstag&nbsp; 9-15 Uhr</p>
+                        </li>
+                        <li>
+                            <p class="days">Freitag&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9-14 Uhr</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+</body>
+
+</html>

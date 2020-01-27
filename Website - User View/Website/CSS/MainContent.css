@@ -1,0 +1,248 @@
+.mainsite {
+    width: 100%;
+    height: fit-content;
+
+    margin: 0;
+    padding: 0;
+    position: relative;
+    top: 63px;
+    left: 0px;
+}
+
+
+
+/* diagonal classes */
+.container {
+    max-width: 800px;
+    display: block;
+    margin: 0 auto;
+    color: black;
+
+    -webkit-transform: skewY(-5deg);
+    -moz-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    -o-transform: skewY(-5deg);
+    transform: skewY(-5deg);
+}
+
+
+#FormularContainer {
+    -webkit-transform: skewY(0deg);
+    -moz-transform: skewY(0deg);
+    -ms-transform: skewY(0deg);
+    -o-transform: skewY(0deg);
+    transform: skewY(0deg);
+    border: 1px solid;
+    height: 95%;
+    position: relative;
+}
+
+.diagonal {
+    padding: 50px 0;
+    position: relative;
+    background: white;
+    min-height: 550px;
+    z-index: 4;
+
+    -webkit-transform: skewY(5deg);
+    -moz-transform: skewY(5deg);
+    -ms-transform: skewY(5deg);
+    -o-transform: skewY(5deg);
+    transform: skewY(5deg);
+}
+
+
+#diag1 {
+    margin-top: 350px;
+}
+
+
+#diag2 {
+    margin-top: 0px;
+}
+
+
+#diagbike{
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+    background-color: transparent;
+    min-height: 300px;
+    height: 460px;
+    z-index: -1;
+}
+
+#BikeRolling {
+    margin-top: 0px;
+    z-index: 4;
+    position: absolute;
+    max-width: 250px;
+    left: 20%;
+    bottom: -52px;
+    margin-bottom: 0;
+    padding: 0;
+}
+
+#largecircle {
+    position: absolute;
+    z-index: 4;
+    width: 400px;
+    -webkit-transform: skewY(0deg);
+    -moz-transform: skewY(-5deg);
+    -ms-transform: skewY(-5deg);
+    -o-transform: skewY(-5deg);
+    transform: skewY(-5deg);
+    left: 60%;
+    top: 50px;
+}
+
+#topimage {
+    width:100%;
+    z-index:3;
+    position: fixed;
+    top: 50px;
+    left:0px;
+}
+
+.reserve-button {
+    margin: 40px;
+    margin-top: 20px;
+    background-color: #76C659;
+    height: 59px;
+    position: relative;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    float: left;
+}
+
+.reserve-button:hover{
+    background-color: #a1d88d;
+}
+
+.english-button{
+    background-color: #76C659;
+    height: 30px;
+    position: relative;
+    width: 100px;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+}
+
+#button {
+    display: block;
+}
+
+#bootom-hr {
+    margin-top: 80px;
+    margin-bottom: 0px;
+}
+
+#top-hr {
+    margin-bottom: 40px;
+    margin-top:0px;
+}
+
+/* ---- Partner Section ----- */
+
+.partners {
+    width: 100%;
+    height: 720px;
+    min-height:400px;
+    position: relative;
+    z-index: 5;
+    background-color: white;
+    margin-top: -250px;
+    display: block;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    height: 290px;
+    max-height: 500px;
+}
+
+/* Create four equal columns that sits next to each other */
+.column {
+    flex: 33%;
+    max-width: calc(33.3% - 20px);
+    position: relative;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.column img {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    object-fit: scale-down;
+    max-width: 100%;
+}
+
+
+.subcaption {
+    color: #696969;
+    bottom: 0px;
+    font-size: 12pt;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+#longcaption {
+    font-size: 11pt;
+    top: 81%;
+}
+
+
+#scaledown1 {
+    max-width: 75%;
+}
+
+
+#scaledown2 {
+    max-width: 60%;
+}
+
+
+#scaledown3 {
+    max-width: 75%;
+}
+
+
+#no-tilt {
+    -webkit-transform: skewY(0deg);
+    -moz-transform: skewY(0deg);
+    -ms-transform: skewY(0deg);
+    -o-transform: skewY(0deg);
+    transform: skewY(0deg);
+    max-width: 850px;
+}
+
+
+/* --- Responsive Code ------ */
+
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+    .column {
+        flex: 50%;
+        max-width: 50%;
+    }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+    .column {
+        flex: 100%;
+        max-width: 100%;
+    }
+}
+
